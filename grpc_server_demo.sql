@@ -74,7 +74,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'patricktest1','patricktest1@mail.com','08124541588','123456','Patrick Test1',1,'2020-07-30 21:26:04.859','2020-07-30 21:26:04.859'),(2,'patricktest2','patricktest2@mail.com','08124541582','123456','Patrick Test1',1,'2020-07-30 21:36:22.518','2020-07-30 21:36:22.518');
+INSERT INTO `user` VALUES (1,'patricktest1','patricktest1@mail.com','08123434343','123456','Patrick Test1',1,'2020-07-30 21:26:04.859','2020-07-30 21:26:04.859'),(2,'patricktest2','patricktest2@mail.com','0812545454','123456','Patrick Test1',1,'2020-07-30 21:36:22.518','2020-07-30 21:36:22.518');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
