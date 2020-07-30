@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "address.proto";
+
+package user;
+
+option go_package = ".;pb";
+option java_multiple_files = true;
+option java_package = "com.github.sangianpatrick.grpc-client-demo.modelpb";
+option java_outer_classname = "UserProto";
+
+
+message User {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
+  string name = 5;
+  address.Address address = 6;
+}
+
+service UserService {
+  rpc Register(User) returns (google.protobuf.Empty) {}
+}
+

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package address;
+
+option go_package = ".;pb";
+option java_multiple_files = true;
+option java_package = "com.github.sangianpatrick.grpc-client-demo.modelpb";
+option java_outer_classname = "AddressProto";
+
+message Address {
+  string province = 1;
+  string district = 2;
+  string subDistrict = 3;
+  string village = 4;
+  string street = 5;
+  string zipCode = 6;
+}
