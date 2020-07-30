@@ -2,25 +2,40 @@ package handler
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
+
+	"github.com/sangianpatrick/grpc-service-demo/src/module/user"
 
 	"github.com/sangianpatrick/grpc-service-demo/src/pb"
 )
 
-type userGRPCHandler struct{}
-
-// NewUserGRPCHandler is a constructor
-func NewUserGRPCHandler() pb.UserServiceServer {
-	return userGRPCHandler{}
+type userGRPCHandler struct {
+	uu user.Usecase
 }
 
-func (userGRPCHandler) Register(ctx context.Context, pbUser *pb.User) (*pb.Empty, error) {
-	userBuff, _ := json.Marshal(pbUser)
+// NewUserGRPCHandler is a constructor
+func NewUserGRPCHandler(uu user.Usecase) pb.UserServiceServer {
+	return userGRPCHandler{
+		uu: uu,
+	}
+}
 
-	fmt.Println("NAME", pbUser.Name)
+func (ugh userGRPCHandler) Register(ctx context.Context, pbUser *pb.User) (empty *pb.Empty, err error) {
+	err = ugh.uu.Register(ctx, pbUser)
+	if err != nil {
+		return
+	}
 
-	fmt.Println(string(userBuff))
+	empty = &pb.Empty{}
+	return
+}
 
-	return new(pb.Empty), nil
+func (ugh userGRPCHandler) GetByUsername(ctx context.Context, request *pb.UserByUsernameRequest) (userResponse *pb.UserResponse, err error) {
+	user, err := ugh.uu.GetByUsername(ctx, request.GetUsername())
+	if err != nil {
+		return
+	}
+
+	userResponse = new(pb.UserResponse)
+	userResponse.Data = user
+	return
 }

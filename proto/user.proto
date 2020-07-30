@@ -11,18 +11,38 @@ option java_package = "com.github.sangianpatrick.grpc-client-demo.modelpb";
 option java_outer_classname = "UserProto";
 
 
+message UserByUsernameRequest {
+  string username = 1;
+}
+
+message UserResponse {
+  User data = 1;
+}
+
+message UsersResponse {
+  repeated User data = 1;
+}
+
+enum AccountStatus {
+  NonActive = 0;
+  Active = 1;
+}
+
 message User {
   int64 id = 1;
   string username = 2;
   string email = 3;
-  string password = 4;
-  string name = 5;
-  address.Address address = 6;
-  string createdAt = 7;
-  string updatedAt = 8;
+  string mobileNumber = 4;
+  string password = 5;
+  string name = 6;
+  address.Address address = 7;
+  AccountStatus accountStatus = 8;
+  string createdAt = 9;
+  string updatedAt = 10;
 }
 
 service UserService {
   rpc Register(User) returns (common.Empty) {}
+  rpc GetByUsername(UserByUsernameRequest) returns (UserResponse) {}
 }
 
