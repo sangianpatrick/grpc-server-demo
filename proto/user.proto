@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
+import "common.proto";
 import "address.proto";
 
 package user;
@@ -18,9 +18,11 @@ message User {
   string password = 4;
   string name = 5;
   address.Address address = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
 }
 
 service UserService {
-  rpc Register(User) returns (google.protobuf.Empty) {}
+  rpc Register(User) returns (common.Empty) {}
 }
 
