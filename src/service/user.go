@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/sangianpatrick/grpc-service-demo/pb"
-	"github.com/sangianpatrick/grpc-service-demo/user/handler"
+	"github.com/sangianpatrick/grpc-service-demo/src/module/user/handler"
+	"github.com/sangianpatrick/grpc-service-demo/src/pb"
 	"google.golang.org/grpc"
 )
 
